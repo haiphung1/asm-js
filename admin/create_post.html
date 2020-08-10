@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Tạo mới bài viết</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" href="../plugins/css/adminlte.min.css">
+        <link rel="stylesheet" href="../assets/css/custom.css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    </head>
+    <body class="hold-transition sidebar-mini layout-navbar-fixed">
+        <div class="loading">Loading&#8230;</div>
+        <div class="wrapper">
+            <div data-include="header"></div>
+            <div data-include="sidebar"></div>
+
+            <div class="content-wrapper">
+                <section class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card card-primary">
+                                  <div class="card-header text-center">
+                                    <h1 class="card-title">Thêm bài viết mới</h1>
+                                  </div>
+                                  <form role="form" id="form_create_post" class="needs-validation" novalidate>
+                                    <div class="card-body">
+                                      <div class="form-group">
+                                        <label>Tiêu đề <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Tiêu đề" id="title" required>
+                                        <div class="invalid-feedback">
+                                          Tiêu đề không được để trống
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label>Chi tiết bài tiết <span class="text-danger">*</span></label>
+                                        <textarea rows="10" class="form-control"  placeholder="Chi tiết bài viết" id="description" required></textarea>
+                                        <div class="invalid-feedback">
+                                          Chi tiết bài viết không được để trống
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="card-footer text-center">
+                                      <button type="submit" class="btn btn-primary">Tạo mới</button>
+                                      <a href="index.html" class="btn btn-danger">Trở lại</a>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div data-include="footer"></div>
+
+        </div>
+
+        <script src="../plugins/js/jquery.min.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script>
+            $(function(){
+                var includes = $('[data-include]');
+                jQuery.each(includes, function(){
+                    let file = '../admin/layout/' + $(this).data('include') + '.html';
+                    $(this).load(file);
+                });
+            });
+        </script>
+        <script src="../plugins/js/bootstrap.bundle.min.js"></script>
+        <script src="../plugins/js/adminlte.min.js"></script>
+        <script src="../assets/js/create.js"></script>
+        <script src="../assets/js/validate.js"></script>
+        <script>
+          $('.loading').hide();
+        </script>
+    </body>
+</html>

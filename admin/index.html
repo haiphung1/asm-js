@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Quản lí bài viết</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" href="../plugins/css/adminlte.min.css">
+        <link rel="stylesheet" href="../assets/css/custom.css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+    </head>
+    <body class="hold-transition sidebar-mini layout-navbar-fixed">
+        <div class="wrapper">
+            <div data-include="header"></div>
+            <div data-include="sidebar"></div>
+
+            <div class="content-wrapper">
+                <section class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                      <form onsubmit="searchPost()">
+                                          <div class="row">
+                                              <div class="col-5">
+                                                <div class="form-group">
+                                                    <select class="form-control" id="filter">
+                                                        <option value="">Lọc</option>
+                                                        <option value="title">Tiêu đề</option>
+                                                        <option value="description">Chi tiết</option>
+                                                    </select>
+                                                </div>
+                                              </div>
+                                              <div class="col-5">
+                                                <div class="form-group">
+                                                    <input type="text" placeholder="Tìm kiếm" class="form-control" id="search">
+                                                </div>
+                                              </div>
+                                              <div class="col-2">
+                                                  <button type="submit" class="btn btn-info btn-block">Tìm kiếm</button>
+                                              </div>
+                                          </div>
+                                      </form>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                      <h1 class="card-title">Danh sách bài viết</h1>
+                                      <a href="create_post.html" class="btn btn-success btn-sm float-right">
+                                        <i class="fas fa-plus"></i>
+                                      </a>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body">
+                                      <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                            <th>STT</th>
+                                            <th>Tiêu đề</th>
+                                            <th>Chi tiết</th>
+                                            <th>Hành động</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="list_posts">
+                                        </tbody>
+                                      </table>
+                                      <nav aria-label="...">
+                                        <ul class="pagination float-right mt-4">
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#" tabindex="-1"> << Sau</a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="#">Tiếp >></a>
+                                            </li>
+                                        </ul>
+                                      </nav>
+                                      <div id="pagination"></div>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div data-include="footer"></div>
+
+        </div>
+
+        <script src="../plugins/js/jquery.min.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+        <script src="../assets/js/post.js"></script>
+        <script src="../assets/js/destroy.js"></script>
+        <script src="../assets/js/edit.js"></script>
+        <script src="../assets/js/search.js"></script>
+        <script src="../assets/js/pagination.js"></script>
+        <script>
+            $(function(){
+                var includes = $('[data-include]');
+                jQuery.each(includes, function(){
+                    let file = '../admin/layout/' + $(this).data('include') + '.html';
+                    $(this).load(file);
+                });
+            });
+        </script>
+        <script src="../plugins/js/bootstrap.bundle.min.js"></script>
+        <script src="../plugins/js/adminlte.min.js"></script>
+        <script>
+           var load_url = window.location.href;
+           var msg = load_url.lastIndexOf('?messages=success');
+           if (msg != -1) {
+                toastr.success('Thực hiện thành công!');
+           }
+        </script>
+    </body>
+</html>
