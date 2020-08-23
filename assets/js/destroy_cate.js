@@ -1,8 +1,8 @@
-function deletePost(id) {
-    const url = 'https://5f30c512373bc7001635ede4.mockapi.io/asm/posts/' + id;
+function deleteCategory(id) {
+    const url = 'https://5f30c512373bc7001635ede4.mockapi.io/asm/categories/' + id;
 
     swal({
-        title: "Bạn chắc có muốn xóa bài viết này?",
+        title: "Bạn chắc có muốn xóa danh mục này không?",
         icon: "warning",
         buttons: ["Hủy", "Thực hiện"],
         dangerMode: true,
@@ -15,7 +15,7 @@ function deletePost(id) {
                         icon: "success",
                         buttons: false,
                     });
-                    window.location.href = 'index.html';
+                    window.location.href = 'list_cate.html';
                 });
         } else {
           swal("Không thực hiện hành động!");

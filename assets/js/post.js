@@ -1,4 +1,6 @@
-const url = 'https://5f30c512373bc7001635ede4.mockapi.io/asm/posts?sortBy=id&order=desc';
+const baseUrl = window.location.href;
+const cateId = baseUrl.substring(baseUrl.lastIndexOf('=') + 1);
+const url = 'https://5f30c512373bc7001635ede4.mockapi.io/asm/categories/' + cateId + '/posts?sortBy=id&order=desc';
 
 axios.get(url)
   .then(function(response) {

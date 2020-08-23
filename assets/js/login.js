@@ -1,7 +1,7 @@
 function postLogin() {
     event.preventDefault();
     
-    const url = 'https://5f30c512373bc7001635ede4.mockapi.io/asm/users';
+    let url = 'https://5f30c512373bc7001635ede4.mockapi.io/asm/users';
     let email = document.querySelector('#email').value;
     let password = document.querySelector('#password').value; 
 

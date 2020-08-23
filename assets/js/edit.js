@@ -1,13 +1,11 @@
-const baseUrl = (window.location).href;
+const baseUrl = window.location.href;
 const id = baseUrl.substring(baseUrl.lastIndexOf('=') + 1);
-
 const url = 'https://5f30c512373bc7001635ede4.mockapi.io/asm/posts/' + id;
 
 axios.get(url)
     .then(function(response){
         let post = response.data;
-        let html = '';
-        html = `
+        let html = `
             <form role="form" id="form_update_post" onsubmit="updatePost(${ post.id })" class="needs-validation" novalidate>
                  <div class="card-body">
                     <div class="form-group">

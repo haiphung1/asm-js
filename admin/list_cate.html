@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Quản lí bài viết</title>
+        <title>Quản lí danh mục</title>
         
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -33,55 +33,23 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
-                                    <div class="card-body">
-                                      <form onsubmit="searchPost()">
-                                          <div class="row">
-                                              <div class="col-5">
-                                                <div class="form-group">
-                                                    <select class="form-control" id="filter">
-                                                        <option value="">Lọc</option>
-                                                        <option value="title">Tiêu đề</option>
-                                                        <option value="description">Chi tiết</option>
-                                                    </select>
-                                                </div>
-                                              </div>
-                                              <div class="col-5">
-                                                <div class="form-group">
-                                                    <input type="text" placeholder="Tìm kiếm" class="form-control" id="search">
-                                                </div>
-                                              </div>
-                                              <div class="col-2">
-                                                  <button type="submit" class="btn btn-info btn-block">Tìm kiếm</button>
-                                              </div>
-                                          </div>
-                                      </form>
-                                    </div>
-                                  </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
                                     <div class="card-header">
-                                      <h1 class="card-title">Danh sách bài viết</h1>
-                                      <a href="create_post.html" class="btn btn-success btn-sm float-right">
-                                        <i class="fas fa-plus"></i>
-                                      </a>
+                                      <h1 class="card-title">Danh sách danh mục</h1>
+                                        <button type="button" class="btn btn-success btn-sm float-right" data-toggle="modal" data-target="#exampleModalCenter">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body">
                                       <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                            <th>STT</th>
-                                            <th>Tiêu đề</th>
-                                            <th>Chi tiết</th>
-                                            <th>Hành động</th>
+                                                <th>STT</th>
+                                                <th>Tiêu đề</th>
+                                                <th>Hành động</th>
                                             </tr>
                                         </thead>
-                                        <tbody class="list_posts">
+                                        <tbody class="list_categories">
                                         </tbody>
                                       </table>
                                       <nav aria-label="...">
@@ -96,6 +64,7 @@
                                         </ul>
                                       </nav>
                                       <div id="pagination"></div>
+                                      <div id="haha"></div>
                                     </div>
                                   </div>
                             </div>
@@ -108,15 +77,46 @@
 
         </div>
 
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Thêm danh mục mới</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form onsubmit="create_cate()">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Tên danh mục <span class="text-danger">*</span></label>
+                                <input type="text" id="cate_name" class="form-control" placeholder="Tên danh mục">
+                                <span class="text-danger" id="err-cate"></span>    
+                            </div>             
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                            <button type="submit" class="btn btn-primary">Tạo mới</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="editCate" tabindex="-1" role="dialog" aria-labelledby="editCate" aria-hidden="true">
+            
+        </div>
+       
         <script src="../plugins/js/jquery.min.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
-        <script src="../assets/js/post.js"></script>
-        <!-- <script src="../assets/js/destroy.js"></script>
-        <script src="../assets/js/edit.js"></script>
-        <script src="../assets/js/search.js"></script>
-        <script src="../assets/js/pagination.js"></script> -->
+        <script src="../assets/js/category.js"></script>
+        <script src="../assets/js/create_cate.js"></script>
+        <script src="../assets/js/destroy_cate.js"></script>
+        <script src="../assets/js/edit_cate.js"></script>
+        <script src="../assets/js/update_cate.js"></script>
         <script>
             $(function(){
                 var includes = $('[data-include]');
@@ -128,12 +128,5 @@
         </script>
         <script src="../plugins/js/bootstrap.bundle.min.js"></script>
         <script src="../plugins/js/adminlte.min.js"></script>
-        <script>
-           var load_url = window.location.href;
-           var msg = load_url.lastIndexOf('?messages=success');
-           if (msg != -1) {
-                toastr.success('Thực hiện thành công!');
-           }
-        </script>
     </body>
 </html>

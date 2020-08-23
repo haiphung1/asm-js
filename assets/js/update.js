@@ -13,6 +13,7 @@ function updatePost(id) {
         method: 'PUT',
         url: url,
         data: {
+            id: id,
             title: title,
             description: description
         }
