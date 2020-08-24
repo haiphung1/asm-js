@@ -1,12 +1,14 @@
 const baseUrl = window.location.href;
-const id = baseUrl.substring(baseUrl.lastIndexOf('=') + 1);
-const url = 'https://5f30c512373bc7001635ede4.mockapi.io/asm/posts/' + id;
+const postId = baseUrl.substring(baseUrl.lastIndexOf('postId=') + 7, baseUrl.lastIndexOf('?'));
+const cateId = baseUrl.substring(baseUrl.lastIndexOf('cateId=') + 7);
+const url = 'https://5f30c512373bc7001635ede4.mockapi.io/asm/categories/' + cateId + '/posts/' + postId;
 
 axios.get(url)
     .then(function(response){
         let post = response.data;
         let html = `
             <form role="form" id="form_update_post" onsubmit="updatePost(${ post.id })" class="needs-validation" novalidate>
+                <input type="hidden" value="${ cateId }" id="cateId">
                  <div class="card-body">
                     <div class="form-group">
                         <label>Tiêu đề <span class="text-danger">*</span></label>

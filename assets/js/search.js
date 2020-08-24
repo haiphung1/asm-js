@@ -1,10 +1,28 @@
+const url_cate = 'https://5f30c512373bc7001635ede4.mockapi.io/asm/categories';
+
+axios.get(url_cate)
+  .then(function(response) {
+    let html = '';
+    response.data.forEach(function(category) {
+      html += `
+        <option value="${ category.id }">${ category.title }</option>
+      `
+    });
+
+    document.querySelector('#cate_search').innerHTML = html;
+  })
+  .catch(function(error) {
+    console.log(error)
+  })
+
 function searchPost() {
     event.preventDefault();
 
     let search = document.querySelector('#search').value;
     let filter = document.querySelector('#filter').value;
-    let urlSearch = 'https://5f30c512373bc7001635ede4.mockapi.io/asm/posts?search=' + search;
-    let urlFilter = 'https://5f30c512373bc7001635ede4.mockapi.io/asm/posts?' + filter + '=' + search;
+    let cateId = document.querySelector('#cate_search').value;
+    let urlSearch = 'https://5f30c512373bc7001635ede4.mockapi.io/asm/categories/' + cateId + '/posts?search=' + search;
+    let urlFilter = 'https://5f30c512373bc7001635ede4.mockapi.io/asm/categories/' + cateId + '/posts?' + filter + '=' + search;
     
     const requestSearch = axios.get(urlSearch);
     const requestFilter = axios.get(urlFilter);

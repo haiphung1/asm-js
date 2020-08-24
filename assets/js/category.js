@@ -19,7 +19,7 @@ axios.get(url)
                         onclick="editCate(${ category.id })">
                         <i class="fas fa-edit"></i>
                     </button>
-                    <a href="#" class="btn btn-danger btn-sm" onclick="deleteCategory(${ category.id })">
+                    <a href="javascript:void(0)" class="btn btn-danger btn-sm" onclick="deleteCategory(${ category.id })">
                         <i class="fas fa-trash-alt"></i>
                     </a>
                 </div>

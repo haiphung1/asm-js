@@ -36,7 +36,7 @@
                                     <div class="card-body">
                                       <form onsubmit="searchPost()">
                                           <div class="row">
-                                              <div class="col-5">
+                                              <div class="col-3">
                                                 <div class="form-group">
                                                     <select class="form-control" id="filter">
                                                         <option value="">Lọc</option>
@@ -45,7 +45,13 @@
                                                     </select>
                                                 </div>
                                               </div>
-                                              <div class="col-5">
+                                              <div class="col-3">
+                                                <div class="form-group">
+                                                    <select class="form-control" id="cate_search">
+                                                    </select>
+                                                </div>
+                                              </div>
+                                              <div class="col-4">
                                                 <div class="form-group">
                                                     <input type="text" placeholder="Tìm kiếm" class="form-control" id="search">
                                                 </div>
@@ -65,7 +71,7 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                      <h1 class="card-title">Danh sách bài viết</h1>
+                                      <h1 class="card-title" id="cate-post">Danh sách bài viết cả danh mục </h1>
                                       <a href="create_post.html" class="btn btn-success btn-sm float-right">
                                         <i class="fas fa-plus"></i>
                                       </a>
@@ -113,10 +119,9 @@
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
         <script src="../assets/js/post.js"></script>
-        <!-- <script src="../assets/js/destroy.js"></script>
+        <script src="../assets/js/destroy.js"></script>
         <script src="../assets/js/edit.js"></script>
         <script src="../assets/js/search.js"></script>
-        <script src="../assets/js/pagination.js"></script> -->
         <script>
             $(function(){
                 var includes = $('[data-include]');

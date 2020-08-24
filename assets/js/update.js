@@ -1,9 +1,10 @@
-function updatePost(id) {
+function updatePost(postId) {
     event.preventDefault();
     
     const title = document.querySelector('#title').value;
     const description = document.querySelector('#description').value;
-    const url = 'https://5f30c512373bc7001635ede4.mockapi.io/asm/posts/' + id;
+    const cateId = document.querySelector('#cateId').value;
+    const url = 'https://5f30c512373bc7001635ede4.mockapi.io/asm/categories/' + cateId + '/posts/' + postId;
 
     if (title == '' || title.trim() == '' || description == '' || description.trim() == '') {
         return ;
@@ -13,7 +14,8 @@ function updatePost(id) {
         method: 'PUT',
         url: url,
         data: {
-            id: id,
+            id: postId,
+            categoryId: cateId,
             title: title,
             description: description
         }
@@ -21,7 +23,7 @@ function updatePost(id) {
         $('.loading').show();
         setTimeout(function(){
             $('.loading').remove();
-            window.location.href = 'index.html?messages=success';
+            window.location.href = 'index.html?messages=success?cate=' + cateId;
         }, 1500);
     });
 }
